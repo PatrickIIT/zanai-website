@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ZanAI — Technology built to amplify what makes you human.</title>
+<meta name="description" content="ZanAI combines world-class data science with empathetic design to build intuitive AI tools that turn your biggest goals into daily reality. Born at IIT Madras Zanzibar.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230B0F14'/%3E%3Ccircle cx='50' cy='50' r='24' fill='none' stroke='%23E8A33D' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='8' fill='%23E8A33D'/%3E%3C/svg%3E">
+<style>
+  :root{
+    --bg:#0B0F14;
+    --bg-panel:#10151C;
+    --bg-panel-2:#141B24;
+    --text:#F4F1EA;
+    --muted:#93A0AC;
+    --muted-dim:#5D6874;
+    --gold:#E8A33D;
+    --gold-soft:#F0C482;
+    --teal:#2EC4B6;
+    --line:rgba(244,241,234,0.10);
+    --line-strong:rgba(244,241,234,0.18);
+    --radius:2px;
+    --container:1180px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Inter',sans-serif;
+    font-size:16px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+    overflow-x:hidden;
+  }
+  img,svg{display:block;max-width:100%;}
+  a{color:inherit;text-decoration:none;}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-family:'IBM Plex Mono',monospace;
+    font-size:12px;
+    letter-spacing:0.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+    display:flex;align-items:center;gap:10px;
+  }
+  .eyebrow::before{content:'';width:16px;height:1px;background:var(--gold);display:inline-block;}
+  h1,h2,h3{font-family:'Fraunces',serif;font-weight:500;letter-spacing:-0.01em;}
+  em{font-style:italic;color:var(--gold-soft);font-weight:500;}
+  :focus-visible{outline:2px solid var(--gold);outline-offset:3px;}
+
+  /* ---------- Aperture graphic (signature element) ---------- */
+  .aperture{position:absolute;pointer-events:none;}
+  .aperture svg{width:100%;height:100%;}
+  .blade{
+    transform-origin:200px 200px;
+    transition:transform 1.4s cubic-bezier(.16,1,.3,1);
+  }
+  .glow{
+    position:absolute;
+    border-radius:50%;
+    filter:blur(90px);
+    opacity:0.55;
+    pointer-events:none;
+  }
+
+  /* ---------- Nav ---------- */
+  header{
+    position:fixed;top:0;left:0;right:0;z-index:50;
+    background:rgba(11,15,20,0.72);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  nav{
+    max-width:var(--container);margin:0 auto;padding:20px 32px;
+    display:flex;align-items:center;justify-content:space-between;
+  }
+  .logo{
+    display:flex;align-items:center;gap:10px;
+    font-family:'Fraunces',serif;font-weight:600;font-size:19px;letter-spacing:0.01em;
+  }
+  .logo .mark{width:22px;height:22px;}
+  .navlinks{display:flex;gap:36px;font-size:14px;color:var(--muted);}
+  .navlinks a:hover{color:var(--text);}
+  .nav-cta{
+    font-size:14px;font-weight:500;
+    padding:9px 18px;
+    border:1px solid var(--line-strong);
+    border-radius:var(--radius);
+    transition:border-color .25s, color .25s;
+  }
+  .nav-cta:hover{border-color:var(--gold);color:var(--gold-soft);}
+  .nav-toggle{display:none;}
+
+  /* ---------- Hero ---------- */
+  .hero{
+    position:relative;
+    min-height:100vh;
+    display:flex;align-items:center;
+    padding-top:120px;padding-bottom:80px;
+    overflow:hidden;
+  }
+  .hero .glow{
+    width:640px;height:640px;
+    top:-160px;right:-160px;
+    background:radial-gradient(circle,var(--gold) 0%, transparent 70%);
+    opacity:0.22;
+  }
+  .hero .aperture{width:520px;height:520px;top:-40px;right:-60px;opacity:0.9;}
+  .hero-inner{position:relative;z-index:2;max-width:760px;}
+  .hero h1{
+    font-size:clamp(2.4rem,5.2vw,4.4rem);
+    line-height:1.08;
+    margin:22px 0 26px;
+  }
+  .hero .sub{
+    font-size:clamp(1.02rem,1.6vw,1.2rem);
+    color:var(--muted);
+    max-width:560px;
+    margin-bottom:42px;
+  }
+  .cta-row{display:flex;gap:16px;flex-wrap:wrap;}
+  .btn{
+    font-family:'Inter',sans-serif;
+    font-size:14.5px;font-weight:600;
+    padding:15px 28px;
+    border-radius:var(--radius);
+    display:inline-flex;align-items:center;gap:8px;
+    transition:transform .25s, box-shadow .25s, background .25s, border-color .25s, color .25s;
+    cursor:pointer;border:none;
+  }
+  .btn-primary{background:var(--gold);color:#0B0F14;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(232,163,61,0.55);}
+  .btn-secondary{background:transparent;color:var(--text);border:1px solid var(--line-strong);}
+  .btn-secondary:hover{border-color:var(--text);transform:translateY(-2px);}
+
+  /* ---------- Section shell ---------- */
+  section{position:relative;padding:130px 0;}
+  .panel{background:var(--bg-panel);border-top:1px solid var(--line);border-bottom:1px solid var(--line);}
+
+  /* ---------- Section 2: Why ---------- */
+  .why{position:relative;overflow:hidden;}
+  .why .glow{width:520px;height:520px;left:-200px;top:20%;background:radial-gradient(circle,var(--teal) 0%, transparent 70%);opacity:0.14;}
+  .why-inner{max-width:900px;position:relative;z-index:2;}
+  .why h2{font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.2;margin:20px 0 40px;}
+  .why .strike{color:var(--muted-dim);text-decoration:line-through;text-decoration-color:var(--muted-dim);text-decoration-thickness:1px;}
+  .why p{color:var(--muted);font-size:1.05rem;max-width:640px;margin-bottom:18px;}
+  .why p:last-of-type{margin-bottom:0;}
+  .why .origin{
+    margin-top:44px;padding-top:36px;border-top:1px solid var(--line);
+    font-family:'Fraunces',serif;font-style:italic;font-size:1.15rem;color:var(--gold-soft);
+    max-width:640px;font-weight:400;
+  }
+
+  /* ---------- Section 3: What we build ---------- */
+  .pillars-head{max-width:600px;margin-bottom:64px;}
+  .pillars-head h2{font-size:clamp(1.7rem,3vw,2.3rem);margin-top:18px;}
+  .pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
+  .pillar{background:var(--bg);padding:44px 36px;position:relative;transition:background .35s;}
+  .pillar:hover{background:var(--bg-panel-2);}
+  .pillar-glyph{width:34px;height:34px;margin-bottom:28px;}
+  .pillar h3{font-size:1.28rem;margin-bottom:14px;font-weight:500;line-height:1.3;}
+  .pillar p{color:var(--muted);font-size:0.98rem;}
+
+  /* ---------- About ---------- */
+  .about{position:relative;overflow:hidden;}
+  .about-grid{display:grid;grid-template-columns:0.9fr 1.1fr;gap:80px;align-items:start;}
+  .about h2{font-size:clamp(1.9rem,3.4vw,2.8rem);line-height:1.18;}
+  .about-copy p{color:var(--muted);font-size:1.05rem;margin-bottom:20px;}
+  .about-copy p:last-child{margin-bottom:0;}
+  .about-copy strong{color:var(--text);font-weight:500;}
+  .campus-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;
+    color:var(--teal);border:1px solid rgba(46,196,182,0.35);
+    padding:7px 12px;margin-top:28px;border-radius:var(--radius);
+  }
+  .campus-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);}
+
+  /* ---------- Mission ---------- */
+  .mission-grid{display:grid;grid-template-columns:1fr 1px 1fr;gap:64px;}
+  .mission-grid .divider{background:var(--line);}
+  .mission-col .eyebrow{margin-bottom:22px;}
+  .mission-col h3{font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.28;font-weight:500;}
+  .mission-col:first-child h3{color:var(--text);}
+  .mission-col:last-child h3{color:var(--gold-soft);}
+
+  /* ---------- Closing CTA ---------- */
+  .closing{position:relative;text-align:center;overflow:hidden;padding:150px 0;}
+  .closing .glow{width:700px;height:700px;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,var(--gold) 0%, transparent 70%);opacity:0.2;}
+  .closing-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;}
+  .closing h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:22px;line-height:1.15;}
+  .closing p{color:var(--muted);font-size:1.08rem;margin-bottom:40px;}
+
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line);padding:48px 0;}
+  .footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;}
+  .footer-inner .logo{font-size:16px;}
+  .footer-links{display:flex;gap:28px;font-size:13.5px;color:var(--muted);}
+  .footer-links a:hover{color:var(--text);}
+  .copyright{font-size:12.5px;color:var(--muted-dim);font-family:'IBM Plex Mono',monospace;}
+
+  /* ---------- Reveal on scroll ---------- */
+  .reveal{opacity:0;transform:translateY(18px);transition:opacity .8s ease,transform .8s ease;}
+  .reveal.in-view{opacity:1;transform:translateY(0);}
+
+  /* ---------- Responsive ---------- */
+  @media (max-width:860px){
+    .navlinks{display:none;}
+    .pillars{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;gap:40px;}
+    .mission-grid{grid-template-columns:1fr;gap:40px;}
+    .mission-grid .divider{display:none;}
+    section{padding:90px 0;}
+    .hero{padding-top:100px;min-height:auto;padding-bottom:70px;}
+    .hero .aperture{opacity:0.5;width:380px;height:380px;}
+  }
+  @media (max-width:480px){
+    .wrap{padding:0 20px;}
+    nav{padding:16px 20px;}
+    .cta-row{flex-direction:column;align-items:flex-start;}
+    .btn{width:100%;justify-content:center;}
+  }
+  @media (prefers-reduced-motion: reduce){
+    *{animation:none !important;transition:none !important;scroll-behavior:auto !important;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="#top" class="logo">
+      <svg class="mark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#E8A33D" stroke-width="4"/><circle cx="50" cy="50" r="22" fill="none" stroke="#E8A33D" stroke-width="3" opacity="0.6"/><circle cx="50" cy="50" r="7" fill="#E8A33D"/></svg>
+      ZanAI
+    </a>
+    <div class="navlinks">
+      <a href="#why">Why ZanAI</a>
+      <a href="#build">What We Build</a>
+      <a href="#about">About</a>
+      <a href="#mission">Mission</a>
+    </div>
+    <a href="#contact" class="nav-cta">Get in Touch</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="glow"></div>
+    <div class="aperture" id="apertureHero">
+      <svg viewBox="0 0 400 400">
+        <g id="bladesHero">
+          <path class="blade" d="M200 200 L200 40 A160 160 0 0 1 338 120 Z" fill="#E8A33D" opacity="0.14"/>
+          <path class="blade" d="M200 200 L338 120 A160 160 0 0 1 338 280 Z" fill="#E8A33D" opacity="0.10"/>
+          <path class="blade" d="M200 200 L338 280 A160 160 0 0 1 200 360 Z" fill="#E8A33D" opacity="0.14"/>
+          <path class="blade" d="M200 200 L200 360 A160 160 0 0 1 62 280 Z" fill="#E8A33D" opacity="0.08"/>
+          <path class="blade" d="M200 200 L62 280 A160 160 0 0 1 62 120 Z" fill="#E8A33D" opacity="0.12"/>
+          <path class="blade" d="M200 200 L62 120 A160 160 0 0 1 200 40 Z" fill="#E8A33D" opacity="0.09"/>
+        </g>
+        <circle cx="200" cy="200" r="160" fill="none" stroke="#F4F1EA" stroke-opacity="0.08"/>
+        <circle cx="200" cy="200" r="90" fill="none" stroke="#E8A33D" stroke-opacity="0.35" stroke-width="1"/>
+        <circle cx="200" cy="200" r="30" fill="#E8A33D" opacity="0.5"/>
+      </svg>
+    </div>
+    <div class="wrap">
+      <div class="hero-inner">
+        <div class="eyebrow">ZanAI</div>
+        <h1>Technology built to amplify what makes you <em>human</em>.</h1>
+        <p class="sub">We combine world-class data science with empathetic design to build intuitive AI tools that turn your biggest goals into daily reality.</p>
+        <div class="cta-row">
+          <a href="#build" class="btn btn-primary">Explore Our Products</a>
+          <a href="#contact" class="btn btn-secondary">Partner With Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why panel" id="why">
+    <div class="glow"></div>
+    <div class="wrap why-inner reveal">
+      <div class="eyebrow">The Difference</div>
+      <h2>AI shouldn't feel like a <span class="strike">black box</span>. It should feel like <em>a light</em>.</h2>
+      <p>Too much technology is built to replace human input or overwhelm users with raw complexity. We believe the true power of artificial intelligence lies in making complex tasks effortless and accessible to everyone.</p>
+      <p>Born out of the rigorous data science ecosystem at IIT Madras Zanzibar, our team crafts AI software that listens, adapts, and works with you — so you can focus on what matters most.</p>
+    </div>
+  </section>
+
+  <!-- WHAT WE BUILD -->
+  <section id="build">
+    <div class="wrap">
+      <div class="pillars-head reveal">
+        <div class="eyebrow">What We Build</div>
+        <h2>Three principles, one intent: clarity over complexity.</h2>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="pillars reveal">
+        <div class="pillar">
+          <svg class="pillar-glyph" viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="#E8A33D" stroke-width="1.5"/><circle cx="20" cy="20" r="6" fill="#E8A33D"/></svg>
+          <h3>Human-Centered Intelligence</h3>
+          <p>We engineer AI models around real human workflows. Every interface is designed to lower friction, reduce cognitive fatigue, and deliver clear, actionable clarity.</p>
+        </div>
+        <div class="pillar">
+          <svg class="pillar-glyph" viewBox="0 0 40 40"><path d="M20 4 L34 12 V28 L20 36 L6 28 V12 Z" fill="none" stroke="#2EC4B6" stroke-width="1.5"/><circle cx="20" cy="20" r="4" fill="#2EC4B6"/></svg>
+          <h3>Ethical &amp; Context-Aware Systems</h3>
+          <p>Data is only as valuable as the context behind it. Our tools intuitively understand local and global nuances, ensuring secure, responsible, and practical intelligence.</p>
+        </div>
+        <div class="pillar">
+          <svg class="pillar-glyph" viewBox="0 0 40 40"><rect x="6" y="6" width="28" height="28" rx="1" fill="none" stroke="#F4F1EA" stroke-opacity="0.6" stroke-width="1.5"/><path d="M13 20 H27 M20 13 V27" stroke="#F4F1EA" stroke-opacity="0.6" stroke-width="1.5"/></svg>
+          <h3>Rigorous Simplicity</h3>
+          <p>We do the heavy mathematical lifting under the hood so you get clean, elegant, and user-friendly software that just works from day one.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about panel" id="about">
+    <div class="wrap about-grid">
+      <div class="reveal">
+        <div class="eyebrow">About Us</div>
+        <h2>World-class engineering. Deeply human roots.</h2>
+      </div>
+      <div class="about-copy reveal">
+        <p>We are a team of data scientists, AI engineers, and product strategists educated at the landmark <strong>IIT Madras Zanzibar</strong> campus. Operating at the crossroads of cutting-edge research and real-world application, we set out to change how people interact with data.</p>
+        <p>We don't measure the success of an algorithm by its parameter count — we measure it by how much time, energy, and value it returns to the person using it.</p>
+        <div class="campus-tag"><span class="dot"></span> IIT Madras Zanzibar — Class Origin</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MISSION -->
+  <section id="mission">
+    <div class="wrap">
+      <div class="mission-grid">
+        <div class="mission-col reveal">
+          <div class="eyebrow">Our Vision</div>
+          <h3>A future where advanced artificial intelligence effortlessly empowers every individual and community to achieve what once seemed impossible.</h3>
+        </div>
+        <div class="divider"></div>
+        <div class="mission-col reveal">
+          <div class="eyebrow">Our Mission</div>
+          <h3>To craft empathetic, high-performance AI and data tools rooted in deep technical excellence that turn complex challenges into simple human opportunities.</h3>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING CTA -->
+  <section class="closing panel" id="contact">
+    <div class="glow"></div>
+    <div class="wrap closing-inner reveal">
+      <h2>Ready to experience AI designed around you?</h2>
+      <p>Whether you need custom enterprise data solutions or want to explore our human-first products, let's build the future together.</p>
+      <a href="mailto:hello@zanai.io" class="btn btn-primary">Get in Touch</a>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <a href="#top" class="logo">
+      <svg class="mark" viewBox="0 0 100 100" style="width:18px;height:18px;"><circle cx="50" cy="50" r="46" fill="none" stroke="#E8A33D" stroke-width="4"/><circle cx="50" cy="50" r="7" fill="#E8A33D"/></svg>
+      ZanAI
+    </a>
+    <div class="footer-links">
+      <a href="#why">Why</a>
+      <a href="#build">Products</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="copyright">© <span id="year"></span> ZanAI. Built at IIT Madras Zanzibar.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Scroll reveal
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
+      });
+    },{threshold:0.15});
+    reveals.forEach(r=>io.observe(r));
+  } else {
+    reveals.forEach(r=>r.classList.add('in-view'));
+  }
+
+  // Aperture blades open slightly on load (light breaking through the black box)
+  window.addEventListener('load', ()=>{
+    const blades = document.querySelectorAll('#bladesHero .blade');
+    setTimeout(()=>{
+      blades.forEach((b,i)=>{
+        b.style.transform = 'scale(1.06) rotate(' + (i%2===0 ? 4 : -4) + 'deg)';
+      });
+    }, 300);
+  });
+</script>
+
+</body>
+</html>
