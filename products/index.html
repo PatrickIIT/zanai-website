@@ -4,8 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Products — ZanAI</title>
-<meta name="description" content="ZanAI's product line: NENA, a bidirectional sign-to-speech platform, and Daftari, a voice-first financial ledger built to scale across African markets, languages, and regulatory environments.">
-<link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="ZanAI's product line: NENA, a sign-to-speech translator built East-Africa-first and designed to scale into a global sign-language platform, and Daftari, a voice-first financial ledger built to scale across African markets, languages, and regulatory environments."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230B0F14'/%3E%3Ccircle cx='50' cy='50' r='24' fill='none' stroke='%23E8A33D' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='8' fill='%23E8A33D'/%3E%3C/svg%3E">
@@ -99,16 +98,18 @@
           <div class="eyebrow">Product 02 — Assistive Communication</div>
           <h2>NENA — a pocket interpreter for East Africa's Deaf community.</h2>
         </div>
-        <span class="status-pill teal">MVP · Targeting Q4 2026</span>
+        <span class="status-pill teal">MVP · East Africa · Targeting Q4 2026</span>
       </div>
 
-      <p class="product-lede">NENA is a bidirectional mobile platform that translates between Tanzanian and Kenyan Sign Language and spoken Swahili in real time — face to face, and over an ordinary phone call — without a human interpreter in the loop.</p>
+      <p class="product-lede">NENA is a bidirectional mobile platform that translates between sign language and spoken language in real time — face to face, and over an ordinary phone call — without a human interpreter in the loop. We're building it East-Africa-first and language-agnostic by design, so the same core becomes a global sign-to-speech translator, not a single-market app.</p>
+
+      <div class="callout">NENA's gesture recognition uses few-shot learning — it doesn't need a massive labelled dataset to understand a new sign language, just a calibration set of a few hundred signs. That's the technical unlock for going global: American Sign Language, British Sign Language, or Nigerian Sign Language become a new calibration pass, not a research project from scratch.</div>
 
       <div class="feature-grid">
         <div class="feature">
           <span class="flabel">Sign-to-Speech</span>
           <h4>Signs become spoken words.</h4>
-          <p>The front camera captures a gesture, an on-device model classifies it, and the phone speaks the Swahili translation aloud in under two seconds.</p>
+          <p>The front camera captures a gesture, an on-device model classifies it, and the phone speaks the translation aloud in under two seconds — in the connected spoken language.</p>
         </div>
         <div class="feature">
           <span class="flabel">Speech-to-Sign</span>
@@ -118,12 +119,12 @@
         <div class="feature">
           <span class="flabel">Nena Call — VoIP Relay</span>
           <h4>A standard phone call, translated live.</h4>
-          <p>A Deaf user can place or receive an ordinary call. The hearing caller needs no special app — they just hear natural, spoken Swahili.</p>
+          <p>A Deaf user can place or receive an ordinary call, anywhere a phone network reaches. The hearing caller needs no special app — they just hear natural spoken language.</p>
         </div>
         <div class="feature">
           <span class="flabel">Voice Identity</span>
           <h4>A voice that matches who they are.</h4>
-          <p>Users choose a Male or Female TTS profile at onboarding and can change it any time — because vocal dignity isn't optional.</p>
+          <p>Users choose a Male or Female TTS profile at onboarding and can change it any time — because vocal dignity isn't optional, in any market.</p>
         </div>
       </div>
 
@@ -131,6 +132,57 @@
         <span class="meta-item">Runs on <strong>3G, mid-range Android</strong></span>
         <span class="meta-item">Video processing <strong>stays on-device</strong></span>
         <span class="meta-item">MVP dictionary <strong>100+ community-validated signs</strong></span>
+        <span class="meta-item">Core model <strong>few-shot, language-swappable</strong></span>
+      </div>
+
+      <div class="wrap" style="padding:0;margin-top:80px;">
+        <div class="eyebrow reveal" style="margin-bottom:20px;">NENA — Path to Global</div>
+        <h3 class="reveal" style="font-family:'Fraunces',serif;font-weight:500;font-size:clamp(1.5rem,2.4vw,2rem);max-width:680px;line-height:1.28;margin-bottom:44px;">Sign language is not one language. Neither is this product.</h3>
+      </div>
+
+      <div class="pillars reveal">
+        <div class="pillar">
+          <svg class="pillar-glyph" viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="#E8A33D" stroke-width="1.5"/><circle cx="20" cy="20" r="6" fill="#E8A33D"/></svg>
+          <h3>Sign Language Layer</h3>
+          <p>Each sign language — TSL, ASL, BSL, or any other — is a separate few-shot calibration set behind the same recognition engine. New sign languages are added, not built from zero.</p>
+        </div>
+        <div class="pillar">
+          <svg class="pillar-glyph" viewBox="0 0 40 40"><path d="M20 4 L34 12 V28 L20 36 L6 28 V12 Z" fill="none" stroke="#2EC4B6" stroke-width="1.5"/><circle cx="20" cy="20" r="4" fill="#2EC4B6"/></svg>
+          <h3>Spoken Language Layer</h3>
+          <p>ASR and TTS run as swappable language packs — Whisper already supports dozens of spoken languages, so the "output side" of a translation pair is rarely the constraint.</p>
+        </div>
+        <div class="pillar">
+          <svg class="pillar-glyph" viewBox="0 0 40 40"><rect x="6" y="6" width="28" height="28" rx="1" fill="none" stroke="#F4F1EA" stroke-opacity="0.6" stroke-width="1.5"/><path d="M13 20 H27 M20 13 V27" stroke="#F4F1EA" stroke-opacity="0.6" stroke-width="1.5"/></svg>
+          <h3>Call Infrastructure Layer</h3>
+          <p>WebRTC and SIP relay work over any telecom network, so Nena Call scales to a new country as a carrier and SIP-gateway integration — not a rebuilt calling stack.</p>
+        </div>
+      </div>
+
+      <div class="wrap" style="padding:0;margin-top:80px;">
+        <div class="eyebrow reveal" style="margin-bottom:32px;">NENA Expansion Roadmap</div>
+        <div class="roadmap reveal">
+          <div class="roadmap-item">
+            <div class="roadmap-phase">Phase 1 — Now</div>
+            <h3>East Africa: TSL &amp; KSL ↔ Swahili.</h3>
+            <p>Prove real-time bidirectional translation and live-call relay in Tanzania and Kenya, with a community-validated 100-sign MVP dictionary and Deaf-led calibration.</p>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-phase">Phase 2 — Year 1</div>
+            <h3>Africa-wide: more sign languages, more spoken pairs.</h3>
+            <p>Add Nigerian Sign Language, South African Sign Language, and Ugandan Sign Language, paired against English, French, and additional local spoken languages.</p>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-phase">Phase 3 — Year 2</div>
+            <h3>International: the major sign languages.</h3>
+            <p>Calibrate American Sign Language, British Sign Language, and International Sign, opening Nena Call to global carriers and cross-border Deaf communication.</p>
+          </div>
+          <div class="roadmap-item">
+            <div class="roadmap-phase">Phase 4 — Year 3+</div>
+            <h3>Universal relay: any sign, any spoken language.</h3>
+            <p>Position NENA as accessibility infrastructure — a relay layer that telecoms, banks, and public services can integrate directly, rather than a single consumer app.</p>
+          </div>
+        </div>
+        <p class="disclaimer">This roadmap reflects strategic intent, not a committed timeline. Each new sign language requires a dedicated calibration and community-validation phase before release — accuracy and dignity come before speed of expansion.</p>
       </div>
     </div>
   </section>
