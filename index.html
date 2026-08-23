@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ZanAI — Technology built to amplify what makes you human.</title>
-<meta name="description" content="ZanAI combines world-class data science with empathetic design to build intuitive AI tools that turn your biggest goals into daily reality. Born at IIT Madras Zanzibar.">
+<meta name="description" content="ZanAI builds AI systems for constrained environments — sign-language translation and financial infrastructure that work on 3G networks, low-resource languages, and offline-first devices.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -20,9 +20,10 @@
       ZanAI
     </a>
     <div class="navlinks">
-      <a href="#why">Why ZanAI</a>
+      <a href="#why">Approach</a>
       <a href="products/">Products</a>
-      <a href="#about">About</a>
+      <a href="blog/">Blog</a>
+      <a href="#team">Team</a>
       <a href="#mission">Mission</a>
     </div>
     <a href="#contact" class="nav-cta">Get in Touch</a>
@@ -52,11 +53,36 @@
     <div class="wrap">
       <div class="hero-inner">
         <div class="eyebrow">ZanAI</div>
-        <h1>Technology built to amplify what makes you <em>human</em>.</h1>
-        <p class="sub">We combine world-class data science with empathetic design to build intuitive AI tools that turn your biggest goals into daily reality.</p>
+        <h1>AI systems for the environments most AI products <em>assume away</em>.</h1>
+        <p class="sub">We build sign-language translation and financial infrastructure that run on 3G networks, low-resource languages, and offline-first devices — the conditions most of the world actually operates in.</p>
         <div class="cta-row">
           <a href="products/" class="btn btn-primary">Explore Our Products</a>
           <a href="#contact" class="btn btn-secondary">Partner With Us</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROOF STRIP -->
+  <section class="proof-strip">
+    <div class="wrap">
+      <div class="proof-label">MVP Target Specifications — See Products for Full Detail</div>
+      <div class="proof-row">
+        <div class="proof-item">
+          <div class="val">≤1.5s</div>
+          <div class="lbl">Gesture recognition, p90 — NENA</div>
+        </div>
+        <div class="proof-item">
+          <div class="val">≤15%</div>
+          <div class="lbl">Speech-to-text word error rate — Daftari</div>
+        </div>
+        <div class="proof-item">
+          <div class="val">3G</div>
+          <div class="lbl">Minimum connectivity both products target</div>
+        </div>
+        <div class="proof-item">
+          <div class="val">On-device</div>
+          <div class="lbl">Gesture &amp; video inference — never uploaded</div>
         </div>
       </div>
     </div>
@@ -66,10 +92,10 @@
   <section class="why panel" id="why">
     <div class="glow"></div>
     <div class="wrap why-inner reveal">
-      <div class="eyebrow">The Difference</div>
-      <h2>AI shouldn't feel like a <span class="strike">black box</span>. It should feel like <em>a light</em>.</h2>
-      <p>Too much technology is built to replace human input or overwhelm users with raw complexity. We believe the true power of artificial intelligence lies in making complex tasks effortless and accessible to everyone.</p>
-      <p>Born out of the rigorous data science ecosystem at IIT Madras Zanzibar, our team crafts AI software that listens, adapts, and works with you — so you can focus on what matters most.</p>
+      <div class="eyebrow">The Constraint</div>
+      <h2>Most AI products assume unlimited bandwidth and average infrastructure. We don't have that luxury.</h2>
+      <p>Building for East African markets means designing for 3G networks, mid-range Android hardware, sign languages and spoken languages with almost no labeled training data, and regulatory systems that change at every border. Cloud-only architectures and off-the-shelf models don't survive those conditions.</p>
+      <p>So we build the constraint into the architecture from day one: on-device inference where connectivity can't be guaranteed, few-shot models where labeled data doesn't exist yet, and offline-first sync where "always online" isn't a safe assumption.</p>
     </div>
   </section>
 
@@ -77,45 +103,50 @@
   <section id="build">
     <div class="wrap">
       <div class="pillars-head reveal">
-        <div class="eyebrow">What We Build</div>
-        <h2>Three principles, one intent: clarity over complexity.</h2>
+        <div class="eyebrow">How We Build</div>
+        <h2>Three architectural decisions, not three slogans.</h2>
       </div>
       <div class="reveal" style="margin-bottom:44px;">
-        <a href="products/" class="btn btn-secondary">See the products these principles built →</a>
+        <a href="products/" class="btn btn-secondary">See the products these decisions built →</a>
       </div>
     </div>
     <div class="wrap">
       <div class="pillars reveal">
         <div class="pillar">
           <svg class="pillar-glyph" viewBox="0 0 40 40"><circle cx="20" cy="20" r="17" fill="none" stroke="#E8A33D" stroke-width="1.5"/><circle cx="20" cy="20" r="6" fill="#E8A33D"/></svg>
-          <h3>Human-Centered Intelligence</h3>
-          <p>We engineer AI models around real human workflows. Every interface is designed to lower friction, reduce cognitive fatigue, and deliver clear, actionable clarity.</p>
+          <h3>Edge-First Inference</h3>
+          <p>Gesture and video processing run on-device, not in the cloud. That's a privacy requirement in NENA's case — no video frames ever leave the phone — and a latency requirement in both products, since round-trips to a server aren't reliable on 3G.</p>
         </div>
         <div class="pillar">
           <svg class="pillar-glyph" viewBox="0 0 40 40"><path d="M20 4 L34 12 V28 L20 36 L6 28 V12 Z" fill="none" stroke="#2EC4B6" stroke-width="1.5"/><circle cx="20" cy="20" r="4" fill="#2EC4B6"/></svg>
-          <h3>Ethical &amp; Context-Aware Systems</h3>
-          <p>Data is only as valuable as the context behind it. Our tools intuitively understand local and global nuances, ensuring secure, responsible, and practical intelligence.</p>
+          <h3>Few-Shot, Low-Resource Learning</h3>
+          <p>Sign languages and many East African languages have almost no annotated training data. We build on few-shot approaches that generalise from a small calibration set, rather than requiring a dataset that doesn't exist yet.</p>
         </div>
         <div class="pillar">
           <svg class="pillar-glyph" viewBox="0 0 40 40"><rect x="6" y="6" width="28" height="28" rx="1" fill="none" stroke="#F4F1EA" stroke-opacity="0.6" stroke-width="1.5"/><path d="M13 20 H27 M20 13 V27" stroke="#F4F1EA" stroke-opacity="0.6" stroke-width="1.5"/></svg>
-          <h3>Rigorous Simplicity</h3>
-          <p>We do the heavy mathematical lifting under the hood so you get clean, elegant, and user-friendly software that just works from day one.</p>
+          <h3>Offline-First Systems</h3>
+          <p>Connectivity drops are the default, not the edge case. Both products queue data locally and sync automatically when a connection returns — no lost records, no manual sync step for the user to remember.</p>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ABOUT -->
-  <section class="about panel" id="about">
-    <div class="wrap about-grid">
-      <div class="reveal">
-        <div class="eyebrow">About Us</div>
-        <h2>World-class engineering. Deeply human roots.</h2>
+  <!-- TEAM -->
+  <section class="about panel" id="team">
+    <div class="wrap">
+      <div class="reveal" style="margin-bottom:56px;max-width:640px;">
+        <div class="eyebrow">Team</div>
+        <h2>Seven people building both products at once.</h2>
+        <p style="color:var(--muted);font-size:1.02rem;margin-top:18px;">A small team working across data science, mobile engineering, and product — based between Tanzania and India.</p>
       </div>
-      <div class="about-copy reveal">
-        <p>We are a team of data scientists, AI engineers, and product strategists educated at the landmark <strong>IIT Madras Zanzibar</strong> campus. Operating at the crossroads of cutting-edge research and real-world application, we set out to change how people interact with data.</p>
-        <p>We don't measure the success of an algorithm by its parameter count — we measure it by how much time, energy, and value it returns to the person using it.</p>
-        <div class="campus-tag"><span class="dot"></span> IIT Madras Zanzibar — Class Origin</div>
+      <div class="team-grid reveal">
+        <div class="team-card"><div class="initial">P</div><div class="name">Patrick Vincent Ndowo</div><div class="role">Founder</div></div>
+        <div class="team-card"><div class="initial">A</div><div class="name">Ahlam Said Salim</div><div class="role">Founder</div></div>
+        <div class="team-card"><div class="initial">I</div><div class="name">Ibrahim Silima Mnemba</div><div class="role">Founder</div></div>
+        <div class="team-card"><div class="initial">I</div><div class="name">Ismail Ramadhan Simai</div><div class="role">Founder</div></div>
+        <div class="team-card"><div class="initial">M</div><div class="name">Milliam Marton Rukanda</div><div class="role">Founder</div></div>
+        <div class="team-card"><div class="initial">N</div><div class="name">Nelson Noel Zakayo</div><div class="role">Founder</div></div>
+        <div class="team-card"><div class="initial">U</div><div class="name">Umniya Maulid</div><div class="role">Founder</div></div>
       </div>
     </div>
   </section>
@@ -126,12 +157,12 @@
       <div class="mission-grid">
         <div class="mission-col reveal">
           <div class="eyebrow">Our Vision</div>
-          <h3>A future where advanced artificial intelligence effortlessly empowers every individual and community to achieve what once seemed impossible.</h3>
+          <h3>AI that works reliably in the environments it's most needed — not just the ones it was designed for.</h3>
         </div>
         <div class="divider"></div>
         <div class="mission-col reveal">
           <div class="eyebrow">Our Mission</div>
-          <h3>To craft empathetic, high-performance AI and data tools rooted in deep technical excellence that turn complex challenges into simple human opportunities.</h3>
+          <h3>To build AI and data infrastructure that performs under real-world constraints: low bandwidth, low-resource languages, and regulatory systems that vary by border.</h3>
         </div>
       </div>
     </div>
@@ -141,8 +172,8 @@
   <section class="closing panel" id="contact">
     <div class="glow"></div>
     <div class="wrap closing-inner reveal">
-      <h2>Ready to experience AI designed around you?</h2>
-      <p>Whether you need custom enterprise data solutions or want to explore our human-first products, let's build the future together.</p>
+      <h2>Want to see the products in action?</h2>
+      <p>Whether you're evaluating a pilot, exploring a technical partnership, or want to talk through the architecture — reach out directly.</p>
       <a href="mailto:hello@zanai.io" class="btn btn-primary">Get in Touch</a>
     </div>
   </section>
@@ -156,12 +187,13 @@
       ZanAI
     </a>
     <div class="footer-links">
-      <a href="#why">Why</a>
+      <a href="#why">Approach</a>
       <a href="products/">Products</a>
-      <a href="#about">About</a>
+      <a href="blog/">Blog</a>
+      <a href="#team">Team</a>
       <a href="#contact">Contact</a>
     </div>
-    <div class="copyright">© <span id="year"></span> ZanAI. Built at IIT Madras Zanzibar.</div>
+    <div class="copyright">© <span id="year"></span> ZanAI. All rights reserved.</div>
   </div>
 </footer>
 
