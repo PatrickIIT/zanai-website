@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Why we build offline-first, not offline-tolerant — ZanAI Blog</title>
+<meta name="description" content="On the architectural difference between handling disconnection gracefully and designing for it from the start, drawn from building NENA and Daftari.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230B0F14'/%3E%3Ccircle cx='50' cy='50' r='24' fill='none' stroke='%23E8A33D' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='8' fill='%23E8A33D'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="../" class="logo">
+      <svg class="mark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#E8A33D" stroke-width="4"/><circle cx="50" cy="50" r="22" fill="none" stroke="#E8A33D" stroke-width="3" opacity="0.6"/><circle cx="50" cy="50" r="7" fill="#E8A33D"/></svg>
+      ZanAI
+    </a>
+    <div class="navlinks">
+      <a href="../#why">Approach</a>
+      <a href="../products/">Products</a>
+      <a href="./" class="active">Blog</a>
+      <a href="../#team">Team</a>
+      <a href="../#mission">Mission</a>
+    </div>
+    <a href="../#contact" class="nav-cta">Get in Touch</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="article-head">
+    <div class="wrap">
+      <div class="post-meta">Engineering · August 2026</div>
+      <h1>Why we build offline-first, not offline-tolerant</h1>
+    </div>
+  </section>
+
+  <section class="article-body">
+    <div class="wrap">
+      <p>Most apps treat "no connection" as an error state — something to catch, show a friendly message for, and recover from once the network comes back. That works fine if your users are occasionally offline. It doesn't work if they're occasionally <em style="color:var(--gold-soft);font-style:italic;">online</em>.</p>
+
+      <p>That's the actual condition for most of the people using our products. A shopkeeper in Kariakoo doesn't have a bad connection — she has an intermittent one, and the app has to be useful in both states without her thinking about which one she's in. So we don't treat offline as an exception path. It's the default assumption the architecture is built around, and "online" is the bonus case.</p>
+
+      <h3>What that looks like in Daftari</h3>
+      <p>Daftari's transaction ledger writes to a local queue first, always — whether or not the device has a connection. If <code>navigator.onLine</code> is false, the transaction goes into a client-side queue with a generated UUID and an <code>is_synced: false</code> flag. There's no "try to save, catch the error, queue it as a fallback" logic, because that ordering assumes online is the normal path and offline is the exception. We inverted it: every write goes to the queue, and syncing to the server is a background concern layered on top.</p>
+      <p>On the backend, the database layer supports two modes behind one interface — PostgreSQL via Supabase in production, SQLite with write-ahead logging as a local fallback. The <code>DB_MODE</code> environment variable switches between them, which matters for a reason that has nothing to do with rural connectivity: it means we can develop and demo the entire product with zero cloud dependency, which turned out to be just as valuable when a conference wifi network failed during a live demo as it is for a merchant with patchy 3G.</p>
+
+      <h3>What that looks like in NENA</h3>
+      <p>NENA's constraint is sharper, because the offline requirement isn't just about UX — it's a privacy requirement too. Gesture recognition has to run entirely on-device: the few-shot classifier processes camera frames locally and never uploads video, which means the sign-to-speech pipeline has to work whether or not the phone has signal at that exact moment. That's also why the target latency budget (1.5 seconds, p90, on hardware roughly equivalent to a Snapdragon 665) is a hard on-device number, not a round-trip-to-a-server number. If the model lived in the cloud, the latency budget would be dominated by network variance we can't control — so it doesn't live in the cloud.</p>
+      <p>The one place NENA does need a live connection — Nena Call, the VoIP relay — is designed to degrade honestly rather than pretend the network isn't there: it targets stability on a real 3G connection (≥1 Mbps) and keeps bandwidth to around 200 kbps by transmitting recognized text tokens instead of video or raw audio where possible, rather than assuming a fast, stable pipe exists.</p>
+
+      <h3>The trade-off we're not pretending away</h3>
+      <p>Offline-first isn't free. It means more state to reconcile, more edge cases around conflicting writes, and — for the compliance advisor in Daftari — a harder question about what to do when a user asks a question offline and there's no cached answer. We don't have a universally satisfying answer to that last one yet; right now it just fails honestly and tells the user to try again once connected, rather than guessing. That's a real gap, not a solved problem, and it's on the list.</p>
+      <p>The reason we keep defaulting to this pattern anyway is simple: a feature that only works when the network cooperates isn't a feature for the people we're building for — it's a demo.</p>
+
+      <a href="./" class="back-link">← Back to Blog</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <a href="../" class="logo">
+      <svg class="mark" viewBox="0 0 100 100" style="width:18px;height:18px;"><circle cx="50" cy="50" r="46" fill="none" stroke="#E8A33D" stroke-width="4"/><circle cx="50" cy="50" r="7" fill="#E8A33D"/></svg>
+      ZanAI
+    </a>
+    <div class="footer-links">
+      <a href="../#why">Approach</a>
+      <a href="../products/">Products</a>
+      <a href="./">Blog</a>
+      <a href="../#team">Team</a>
+      <a href="../#contact">Contact</a>
+    </div>
+    <div class="copyright">© <span id="year"></span> ZanAI. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>

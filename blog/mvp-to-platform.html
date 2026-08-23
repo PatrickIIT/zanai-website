@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>From MVP to platform: what we're building next — ZanAI Blog</title>
+<meta name="description" content="An honest look at the four systems ZanAI is researching next, why none of them have benchmark numbers yet, and how they connect to NENA and Daftari.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230B0F14'/%3E%3Ccircle cx='50' cy='50' r='24' fill='none' stroke='%23E8A33D' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='8' fill='%23E8A33D'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="../" class="logo">
+      <svg class="mark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#E8A33D" stroke-width="4"/><circle cx="50" cy="50" r="22" fill="none" stroke="#E8A33D" stroke-width="3" opacity="0.6"/><circle cx="50" cy="50" r="7" fill="#E8A33D"/></svg>
+      ZanAI
+    </a>
+    <div class="navlinks">
+      <a href="../#why">Approach</a>
+      <a href="../products/">Products</a>
+      <a href="./" class="active">Blog</a>
+      <a href="../#team">Team</a>
+      <a href="../#mission">Mission</a>
+    </div>
+    <a href="../#contact" class="nav-cta">Get in Touch</a>
+  </nav>
+</header>
+
+<main id="top">
+  <section class="article-head">
+    <div class="wrap">
+      <div class="post-meta">Product &amp; Strategy · August 2026</div>
+      <h1>From MVP to platform: what we're building next</h1>
+    </div>
+  </section>
+
+  <section class="article-body">
+    <div class="wrap">
+      <p>NENA and Daftari are both point solutions right now — one MVP live in a Dar es Salaam pilot, one targeting Q4 2026. Both prove something real: that on-device inference, few-shot learning, and offline-first sync can hold up in the conditions we built them for. What neither one proves yet is that the underlying approach generalizes into something other teams could build on.</p>
+      <p>That's the honest gap between "we shipped a product" and "we built infrastructure." Here's where the four systems on our <a href="../products/#upcoming" style="color:var(--gold-soft);">Upcoming Products</a> list actually come from, and why we're describing them as research directions instead of specs with numbers attached.</p>
+
+      <h3>ZanCore-1 didn't come from nowhere</h3>
+      <p>Both NENA's cloud-side calls and Daftari's Mshauri advisor depend on general-purpose model inference — Whisper for speech, Gemini for the compliance chatbot. Every millisecond of latency there is a millisecond a merchant is holding a phone between customers, or a Deaf user is waiting mid-conversation. Right now we absorb that latency by depending on well-optimized third-party infrastructure. ZanCore-1 is the question of what happens if we own that layer instead — quantization, kernel-level optimization, edge deployment. It's a real technical direction with a clear internal customer (our own products), which is a better reason to build it than "inference optimization sounds impressive."</p>
+      <p>We haven't published a benchmark because we don't have one worth publishing yet. When we do, it'll be reproducible, not a number in a paragraph.</p>
+
+      <h3>ZanFlow-Agent is a response to a specific failure mode</h3>
+      <p>Mshauri, Daftari's AI advisor, already has a version of this problem solved narrowly: the system prompt caps responses to three sentences and explicitly limits scope to reduce the chance of confidently wrong compliance advice. That's a patch, not an architecture. ZanFlow-Agent is what that patch looks like if we build it properly — structured execution with verification steps and explicit fallback behavior, instead of hoping a shorter prompt reduces hallucination enough. It's motivated by a real weakness we already know we have, not a hypothetical one.</p>
+
+      <h3>SwahiliLM is the most defensible of the four, and the slowest</h3>
+      <p>Both products currently lean on Whisper, which is a strong general-purpose model that wasn't trained with Tanzanian or Kenyan Swahili, code-switching, or financial vocabulary as a priority. A model fine-tuned specifically for that would plausibly outperform it on our exact use case. The reason this is the slowest of the four to move on isn't technical difficulty — it's that doing it responsibly means building a consented, community-sourced dataset first, and we're not willing to shortcut that step to move faster.</p>
+
+      <h3>ZanCommerce is still just conversations</h3>
+      <p>This one is earliest-stage by a wide margin. The idea — bridging Instagram storefronts, WhatsApp negotiation, and mobile money settlement into one automated flow — comes directly from merchant interviews, not from a product roadmap exercise. Right now it's validation work: understanding whether merchants actually want this automated, or whether the manual process is doing something (trust, negotiation flexibility) that an agent would break. We'd rather find that out before writing code than after.</p>
+
+      <h3>Why we're writing this down at all</h3>
+      <p>It would be easy to list these four as "coming soon" with confident language and no caveats. We're doing the opposite on purpose. A roadmap that only ever sounds finished isn't useful to anyone reading it closely — and the people we most want reading closely are exactly the ones who'll notice the difference between a shipped result and a stated intention.</p>
+
+      <a href="./" class="back-link">← Back to Blog</a>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <a href="../" class="logo">
+      <svg class="mark" viewBox="0 0 100 100" style="width:18px;height:18px;"><circle cx="50" cy="50" r="46" fill="none" stroke="#E8A33D" stroke-width="4"/><circle cx="50" cy="50" r="7" fill="#E8A33D"/></svg>
+      ZanAI
+    </a>
+    <div class="footer-links">
+      <a href="../#why">Approach</a>
+      <a href="../products/">Products</a>
+      <a href="./">Blog</a>
+      <a href="../#team">Team</a>
+      <a href="../#contact">Contact</a>
+    </div>
+    <div class="copyright">© <span id="year"></span> ZanAI. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>document.getElementById('year').textContent = new Date().getFullYear();</script>
+
+</body>
+</html>
