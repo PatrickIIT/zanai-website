@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Products — ZanAI</title>
-<meta name="description" content="ZanAI's product line: NENA, a sign-to-speech translator built East-Africa-first and designed to scale into a global sign-language platform, and Daftari, a voice-first financial ledger built to scale across African markets, languages, and regulatory environments."><link rel="preconnect" href="https://fonts.googleapis.com">
+<meta name="description" content="ZanAI's product line: NENA, a sign-to-speech translator for Deaf communication, and Daftari, a voice-first financial ledger — both built for 3G networks, low-resource languages, and offline-first devices."><link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230B0F14'/%3E%3Ccircle cx='50' cy='50' r='24' fill='none' stroke='%23E8A33D' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='8' fill='%23E8A33D'/%3E%3C/svg%3E">
@@ -19,9 +19,9 @@
       ZanAI
     </a>
     <div class="navlinks">
-      <a href="../#why">Why ZanAI</a>
+      <a href="../#why">Approach</a>
       <a href="./" class="active">Products</a>
-      <a href="../#about">About</a>
+      <a href="../#team">Team</a>
       <a href="../#mission">Mission</a>
     </div>
     <a href="../#contact" class="nav-cta">Get in Touch</a>
@@ -35,8 +35,8 @@
     <div class="glow"></div>
     <div class="wrap subhero-inner">
       <div class="eyebrow">Products</div>
-      <h1>Built in East Africa. Engineered to <em>travel</em>.</h1>
-      <p class="sub">Every ZanAI product starts with a real constraint — low bandwidth, low digital literacy, low trust in formal institutions — and turns it into an interface people actually want to use. Two products, one architecture built for expansion.</p>
+      <h1>Two products. Built for the conditions most AI assumes away.</h1>
+      <p class="sub">Not demos, not concepts — an MVP live in pilot and one targeting Q4 2026, both engineered around 3G connectivity, low-resource languages, and offline-first operation.</p>
       <div class="cta-row">
         <a href="#daftari" class="btn btn-primary">See Daftari</a>
         <a href="#nena" class="btn btn-secondary">See NENA</a>
@@ -87,6 +87,20 @@
         <span class="meta-item">Response time <strong>under 10 seconds</strong></span>
         <span class="meta-item">Health Card unlocks <strong>after 30 transactions</strong></span>
       </div>
+
+      <div style="margin-top:44px;">
+        <div class="eyebrow" style="margin-bottom:4px;">Target Specifications</div>
+        <table class="spec-table">
+          <tr><th>Parameter</th><th>MVP Target</th></tr>
+          <tr><td>Speech-to-text accuracy</td><td>≤15% WER (structured UAT, clear speech)</td></tr>
+          <tr><td>API response time</td><td>≤5s, async throughout</td></tr>
+          <tr><td>Transaction confirm → save</td><td>Immediate (appears in ledger instantly)</td></tr>
+          <tr><td>Offline recovery</td><td>Client UUID, zero-duplicate sync on reconnect</td></tr>
+          <tr><td>Auth</td><td>Phone-only OTP — SMS primary, WhatsApp fallback</td></tr>
+          <tr><td>Mobile layout</td><td>Usable at 390px width, no horizontal scroll</td></tr>
+        </table>
+        <p class="spec-note">Targets defined in the MVP acceptance criteria; the Dar es Salaam pilot is validating them against real usage now.</p>
+      </div>
     </div>
   </section>
 
@@ -133,6 +147,20 @@
         <span class="meta-item">Video processing <strong>stays on-device</strong></span>
         <span class="meta-item">MVP dictionary <strong>100+ community-validated signs</strong></span>
         <span class="meta-item">Core model <strong>few-shot, language-swappable</strong></span>
+      </div>
+
+      <div style="margin-top:44px;">
+        <div class="eyebrow" style="margin-bottom:4px;">Target Specifications</div>
+        <table class="spec-table">
+          <tr><th>Parameter</th><th>MVP Target</th></tr>
+          <tr><td>Gesture classification latency</td><td>≤1.5s, p90 (Snapdragon 665 class)</td></tr>
+          <tr><td>Text-to-speech latency</td><td>≤500ms from token</td></tr>
+          <tr><td>Call round-trip (voice → sign animation)</td><td>≤3s end-to-end</td></tr>
+          <tr><td>Bandwidth per call session</td><td>≤200 kbps — tokens only, no video upload</td></tr>
+          <tr><td>Compatibility</td><td>Android 9.0+ (API 28), ≥1 Mbps connection</td></tr>
+          <tr><td>Onboarding completion time</td><td>≤3 minutes for a new Deaf user</td></tr>
+        </table>
+        <p class="spec-note">Targets defined in the MVP acceptance criteria and non-functional requirements; not yet independently benchmarked at scale.</p>
       </div>
 
       <div class="wrap" style="padding:0;margin-top:80px;">
@@ -245,12 +273,23 @@
     </div>
   </section>
 
+  <!-- RESEARCH DIRECTION -->
+  <section class="panel" id="research">
+    <div class="wrap">
+      <div class="pillars-head reveal" style="margin-bottom:32px;">
+        <div class="eyebrow">Research Direction</div>
+        <h2>What we're working on next.</h2>
+      </div>
+      <p class="product-lede reveal">Both products currently rely on general-purpose models — Whisper for ASR, CLIP-based few-shot classification for gestures — run through standard inference paths. The next technical bet is bringing per-device latency and compute cost down further through model compression and edge-optimized inference, so both products stay usable on lower-end hardware as the user base grows. We haven't published benchmarks for this yet — we'll share numbers when we have results worth standing behind.</p>
+    </div>
+  </section>
+
   <!-- CLOSING CTA -->
   <section class="closing panel" id="contact">
     <div class="glow"></div>
     <div class="wrap closing-inner reveal">
       <h2>Want to pilot a product in a new market?</h2>
-      <p>Whether you're a fintech, an NGO, a Deaf community organisation, or a regulator exploring interoperable compliance data — we build expansion plans together, not for you.</p>
+      <p>Whether you're a fintech, an NGO, a Deaf community organisation, or a regulator exploring interoperable compliance data — reach out directly.</p>
       <a href="mailto:hello@zanai.io" class="btn btn-primary">Get in Touch</a>
     </div>
   </section>
@@ -264,12 +303,12 @@
       ZanAI
     </a>
     <div class="footer-links">
-      <a href="../#why">Why</a>
+      <a href="../#why">Approach</a>
       <a href="./">Products</a>
-      <a href="../#about">About</a>
+      <a href="../#team">Team</a>
       <a href="#contact">Contact</a>
     </div>
-    <div class="copyright">© <span id="year"></span> ZanAI. Built at IIT Madras Zanzibar.</div>
+    <div class="copyright">© <span id="year"></span> ZanAI. All rights reserved.</div>
   </div>
 </footer>
 
