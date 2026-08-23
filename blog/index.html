@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blog — ZanAI</title>
+<meta name="description" content="Engineering notes from ZanAI on building AI for constrained environments — offline-first architecture, low-resource language models, and what's next after MVP.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,500;0,9..144,600;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='46' fill='%230B0F14'/%3E%3Ccircle cx='50' cy='50' r='24' fill='none' stroke='%23E8A33D' stroke-width='4'/%3E%3Ccircle cx='50' cy='50' r='8' fill='%23E8A33D'/%3E%3C/svg%3E">
+<link rel="stylesheet" href="../assets/styles.css">
+</head>
+<body>
+
+<header>
+  <nav class="wrap">
+    <a href="../" class="logo">
+      <svg class="mark" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#E8A33D" stroke-width="4"/><circle cx="50" cy="50" r="22" fill="none" stroke="#E8A33D" stroke-width="3" opacity="0.6"/><circle cx="50" cy="50" r="7" fill="#E8A33D"/></svg>
+      ZanAI
+    </a>
+    <div class="navlinks">
+      <a href="../#why">Approach</a>
+      <a href="../products/">Products</a>
+      <a href="./" class="active">Blog</a>
+      <a href="../#team">Team</a>
+      <a href="../#mission">Mission</a>
+    </div>
+    <a href="../#contact" class="nav-cta">Get in Touch</a>
+  </nav>
+</header>
+
+<main id="top">
+
+  <!-- SUB-HERO -->
+  <section class="subhero">
+    <div class="glow"></div>
+    <div class="wrap subhero-inner">
+      <div class="eyebrow">Blog</div>
+      <h1>Engineering notes, not press releases.</h1>
+      <p class="sub">What we tried, what we changed our minds about, and what we're still not sure of — written as we build NENA, Daftari, and the systems behind them.</p>
+    </div>
+  </section>
+
+  <!-- POST LIST -->
+  <section>
+    <div class="wrap">
+      <div class="post-list reveal">
+        <a href="offline-first.html" class="post-card">
+          <div class="post-meta">Engineering · August 2026</div>
+          <div class="post-title">Why we build offline-first, not offline-tolerant</div>
+          <p class="post-excerpt">Most apps treat "no connection" as an error state to handle gracefully. We treat it as the default state to design around — and that difference shows up everywhere from NENA's on-device gesture model to Daftari's SQLite fallback.</p>
+          <span class="post-arrow">Read more →</span>
+        </a>
+
+        <a href="mvp-to-platform.html" class="post-card">
+          <div class="post-meta">Product &amp; Strategy · August 2026</div>
+          <div class="post-title">From MVP to platform: what we're building next</div>
+          <p class="post-excerpt">NENA and Daftari prove the model works at pilot scale. Here's the honest state of the four systems we're researching next — and why we're not putting benchmark numbers on any of them yet.</p>
+          <span class="post-arrow">Read more →</span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap footer-inner">
+    <a href="../" class="logo">
+      <svg class="mark" viewBox="0 0 100 100" style="width:18px;height:18px;"><circle cx="50" cy="50" r="46" fill="none" stroke="#E8A33D" stroke-width="4"/><circle cx="50" cy="50" r="7" fill="#E8A33D"/></svg>
+      ZanAI
+    </a>
+    <div class="footer-links">
+      <a href="../#why">Approach</a>
+      <a href="../products/">Products</a>
+      <a href="./">Blog</a>
+      <a href="../#team">Team</a>
+      <a href="../#contact">Contact</a>
+    </div>
+    <div class="copyright">© <span id="year"></span> ZanAI. All rights reserved.</div>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+  const reveals = document.querySelectorAll('.reveal');
+  if ('IntersectionObserver' in window){
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){ e.target.classList.add('in-view'); io.unobserve(e.target); }
+      });
+    },{threshold:0.12});
+    reveals.forEach(r=>io.observe(r));
+  } else {
+    reveals.forEach(r=>r.classList.add('in-view'));
+  }
+</script>
+
+</body>
+</html>
