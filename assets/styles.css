@@ -1,20 +1,21 @@
 /* ==========================================================================
    ZanAI shared design system
    Fraunces (display) + Inter (body) + IBM Plex Mono (labels/eyebrows)
-   Signature motif: the aperture — light breaking through the black box
+   Palette: deep navy + gold + light academic blue, inspired by EAC-SMS/IUCEA
    ========================================================================== */
   :root{
-    --bg:#0B0F14;
-    --bg-panel:#10151C;
-    --bg-panel-2:#141B24;
-    --text:#F4F1EA;
-    --muted:#93A0AC;
-    --muted-dim:#5D6874;
-    --gold:#E8A33D;
-    --gold-soft:#F0C482;
-    --teal:#2EC4B6;
-    --line:rgba(244,241,234,0.10);
-    --line-strong:rgba(244,241,234,0.18);
+    --bg:#F7F9FC;
+    --bg-panel:#FFFFFF;
+    --bg-panel-2:#EEF2F8;
+    --text:#16213A;
+    --muted:#57616F;
+    --muted-dim:#8892A0;
+    --primary:#0B3D8F;
+    --gold:#C08A2E;
+    --gold-soft:#8F6510;
+    --teal:#2F6FB2;
+    --line:rgba(22,33,58,0.10);
+    --line-strong:rgba(22,33,58,0.18);
     --radius:2px;
     --container:1180px;
   }
@@ -63,7 +64,7 @@
   /* ---------- Nav ---------- */
   header{
     position:fixed;top:0;left:0;right:0;z-index:50;
-    background:rgba(11,15,20,0.72);
+    background:rgba(247,249,252,0.82);
     backdrop-filter:blur(10px);
     border-bottom:1px solid var(--line);
   }
@@ -125,8 +126,8 @@
     transition:transform .25s, box-shadow .25s, background .25s, border-color .25s, color .25s;
     cursor:pointer;border:none;
   }
-  .btn-primary{background:var(--gold);color:#0B0F14;}
-  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(232,163,61,0.55);}
+  .btn-primary{background:var(--primary);color:#fff;}
+  .btn-primary:hover{transform:translateY(-2px);box-shadow:0 10px 30px -8px rgba(11,61,143,0.45);}
   .btn-secondary{background:transparent;color:var(--text);border:1px solid var(--line-strong);}
   .btn-secondary:hover{border-color:var(--text);transform:translateY(-2px);}
 
@@ -168,7 +169,7 @@
   .campus-tag{
     display:inline-flex;align-items:center;gap:8px;
     font-family:'IBM Plex Mono',monospace;font-size:11.5px;letter-spacing:0.1em;text-transform:uppercase;
-    color:var(--teal);border:1px solid rgba(46,196,182,0.35);
+    color:var(--teal);border:1px solid rgba(47,111,178,0.35);
     padding:7px 12px;margin-top:28px;border-radius:var(--radius);
   }
   .campus-tag .dot{width:6px;height:6px;border-radius:50%;background:var(--teal);}
@@ -182,11 +183,18 @@
   .mission-col:last-child h3{color:var(--gold-soft);}
 
   /* ---------- Closing CTA ---------- */
-  .closing{position:relative;text-align:center;overflow:hidden;padding:150px 0;}
-  .closing .glow{width:700px;height:700px;left:50%;top:50%;transform:translate(-50%,-50%);background:radial-gradient(circle,var(--gold) 0%, transparent 70%);opacity:0.2;}
+  .closing{position:relative;text-align:center;overflow:hidden;padding:150px 0;background:var(--primary);color:#fff;}
+  .closing .glow{
+    width:700px;height:700px;left:50%;top:50%;transform:translate(-50%,-50%);
+    background:radial-gradient(circle at 30% 30%, var(--gold) 0%, transparent 45%),
+               radial-gradient(circle at 75% 70%, var(--teal) 0%, transparent 45%);
+    opacity:0.3;
+  }
   .closing-inner{position:relative;z-index:2;max-width:640px;margin:0 auto;}
-  .closing h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:22px;line-height:1.15;}
-  .closing p{color:var(--muted);font-size:1.08rem;margin-bottom:40px;}
+  .closing h2{font-size:clamp(2rem,4vw,3rem);margin-bottom:22px;line-height:1.15;color:#fff;}
+  .closing p{color:rgba(255,255,255,0.8);font-size:1.08rem;margin-bottom:40px;}
+  .closing .btn-primary{background:var(--gold);color:var(--text);}
+  .closing .btn-primary:hover{box-shadow:0 10px 30px -8px rgba(192,138,46,0.5);}
 
   /* ---------- Footer ---------- */
   footer{border-top:1px solid var(--line);padding:48px 0;}
@@ -241,11 +249,11 @@
 .product-head-text{max-width:660px;}
 .product-head h2{font-size:clamp(1.8rem,3.1vw,2.5rem);margin-top:16px;line-height:1.2;}
 .status-pill{font-family:'IBM Plex Mono',monospace;font-size:10.5px;letter-spacing:.1em;text-transform:uppercase;padding:8px 15px;border:1px solid var(--line-strong);border-radius:20px;white-space:nowrap;color:var(--muted);flex-shrink:0;}
-.status-pill.teal{border-color:rgba(46,196,182,.4);color:var(--teal);}
-.status-pill.gold{border-color:rgba(232,163,61,.4);color:var(--gold-soft);}
+.status-pill.teal{border-color:rgba(47,111,178,.4);color:var(--teal);}
+.status-pill.gold{border-color:rgba(192,138,46,.4);color:var(--gold-soft);}
 .product-lede{color:var(--muted);font-size:1.05rem;max-width:680px;margin-bottom:20px;}
 
-.callout{margin:8px 0 44px;padding:22px 26px;border-left:2px solid var(--gold);background:rgba(232,163,61,0.05);font-family:'Fraunces',serif;font-style:italic;color:var(--gold-soft);font-size:1.02rem;font-weight:400;max-width:680px;line-height:1.5;}
+.callout{margin:8px 0 44px;padding:22px 26px;border-left:2px solid var(--gold);background:rgba(192,138,46,0.06);font-family:'Fraunces',serif;font-style:italic;color:var(--gold-soft);font-size:1.02rem;font-weight:400;max-width:680px;line-height:1.5;}
 
 .feature-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line);}
 .feature{background:var(--bg);padding:30px 32px;transition:background .3s;}
@@ -262,7 +270,7 @@
 .roadmap{max-width:760px;margin-top:12px;}
 .roadmap-item{position:relative;padding:0 0 52px 36px;border-left:1px solid var(--line);}
 .roadmap-item:last-child{padding-bottom:0;border-left-color:transparent;}
-.roadmap-item::before{content:'';position:absolute;left:-5px;top:3px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(232,163,61,0.14);}
+.roadmap-item::before{content:'';position:absolute;left:-5px;top:3px;width:9px;height:9px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 4px rgba(192,138,46,0.16);}
 .roadmap-phase{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold);margin-bottom:10px;}
 .roadmap-item h3{font-size:1.25rem;margin-bottom:10px;font-weight:500;line-height:1.3;}
 .roadmap-item p{color:var(--muted);font-size:.96rem;max-width:600px;}
