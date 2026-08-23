@@ -21,6 +21,7 @@
     <div class="navlinks">
       <a href="../#why">Approach</a>
       <a href="./" class="active">Products</a>
+      <a href="../blog/">Blog</a>
       <a href="../#team">Team</a>
       <a href="../#mission">Mission</a>
     </div>
@@ -273,14 +274,86 @@
     </div>
   </section>
 
+  <!-- UPCOMING PRODUCTS -->
+  <section class="panel" id="upcoming">
+    <div class="wrap">
+      <div class="pillars-head reveal" style="margin-bottom:24px;">
+        <div class="eyebrow">Upcoming Products</div>
+        <h2>Four systems in research or early concept.</h2>
+      </div>
+      <p class="product-lede reveal">Each of these extends an architecture principle NENA and Daftari already prove out — edge-first inference, few-shot learning, offline-first design — into a standalone system. None of these are shipped. Status is labeled honestly below; we'll publish real numbers when we have results worth standing behind, not before.</p>
+    </div>
+
+    <div class="wrap">
+      <div class="concept-grid reveal">
+        <div class="concept-card">
+          <div class="concept-head">
+            <h3>ZanCore-1</h3>
+            <span class="status-pill outline">Concept — Research</span>
+          </div>
+          <p class="concept-sub">Inference Optimization Engine</p>
+          <p class="concept-desc">A low-latency, low-cost inference runtime for deploying open-weight language models on edge and cost-constrained GPU hardware — the same latency pressure that shapes NENA and Daftari's cloud-side calls, pulled into its own product.</p>
+          <ul class="goal-list">
+            <li>Design goal: sub-50ms time-to-first-token on 8B-class open-weight models via quantization and kernel-level optimization</li>
+            <li>Design goal: meaningfully lower VRAM footprint than FP16 baseline deployment</li>
+            <li>Would directly reduce hosting cost and response latency for Mshauri and NENA's cloud-side inference</li>
+          </ul>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-head">
+            <h3>ZanFlow-Agent</h3>
+            <span class="status-pill outline">Concept — Research</span>
+          </div>
+          <p class="concept-sub">Deterministic Agent Runtime</p>
+          <p class="concept-desc">A structured, stateful execution framework for AI agents in workflows where reliability matters more than improvisation — replacing ad hoc prompt chains with explicit state, verification steps, and fallback paths.</p>
+          <ul class="goal-list">
+            <li>Design goal: graph-based execution instead of free-form prompt chaining</li>
+            <li>Design goal: real-time output validation with deterministic fallbacks, not silent failure</li>
+            <li>Motivated directly by Mshauri's confidence-gating requirement — don't guess at compliance advice</li>
+          </ul>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-head">
+            <h3>SwahiliLM</h3>
+            <span class="status-pill outline">Concept — Data Collection</span>
+          </div>
+          <p class="concept-sub">Regional Language &amp; Speech Model</p>
+          <p class="concept-desc">Both NENA and Daftari currently lean on general-purpose Whisper ASR. A model fine-tuned specifically on Swahili and neighbouring East African languages — including code-switching, regional accents, and financial/compliance vocabulary — is the natural next step once we have the data to train it responsibly.</p>
+          <ul class="goal-list">
+            <li>Design goal: materially lower word error rate than general-purpose ASR on Tanzanian/Kenyan Swahili</li>
+            <li>Design goal: CPU-viable quantized runtime, so it can run on the same mid-range hardware NENA and Daftari already target</li>
+            <li>Depends on consented, community-sourced voice data — not a shortcut we'll take before it exists</li>
+          </ul>
+        </div>
+
+        <div class="concept-card">
+          <div class="concept-head">
+            <h3>ZanCommerce</h3>
+            <span class="status-pill outline">Concept — Validating</span>
+          </div>
+          <p class="concept-sub">Social Commerce Agent &amp; Settlement Bridge</p>
+          <p class="concept-desc">Most East African social commerce runs through Instagram for storefront, WhatsApp for negotiation, and mobile money for payment — three disconnected surfaces a merchant reconciles by hand. ZanCommerce would bridge them into one automated flow, living inside WhatsApp rather than a separate dashboard.</p>
+          <ul class="goal-list">
+            <li>Design goal: mixed Swahili/English (Sheng) conversational agent handling product inquiries in-chat</li>
+            <li>Design goal: automated mobile money payment verification, replacing manual screenshot checking</li>
+            <li>Currently in merchant interviews, not development — we're validating the workflow before we build it</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- RESEARCH DIRECTION -->
-  <section class="panel" id="research">
+  <section id="research">
     <div class="wrap">
       <div class="pillars-head reveal" style="margin-bottom:32px;">
         <div class="eyebrow">Research Direction</div>
-        <h2>What we're working on next.</h2>
+        <h2>Reading more on how we think about this.</h2>
       </div>
-      <p class="product-lede reveal">Both products currently rely on general-purpose models — Whisper for ASR, CLIP-based few-shot classification for gestures — run through standard inference paths. The next technical bet is bringing per-device latency and compute cost down further through model compression and edge-optimized inference, so both products stay usable on lower-end hardware as the user base grows. We haven't published benchmarks for this yet — we'll share numbers when we have results worth standing behind.</p>
+      <p class="product-lede reveal">We write about the engineering decisions behind these products as we make them — what we tried, what we changed our minds about, and what we're still not sure of.</p>
+      <a href="../blog/" class="btn btn-secondary reveal">Read the blog →</a>
     </div>
   </section>
 
@@ -305,6 +378,7 @@
     <div class="footer-links">
       <a href="../#why">Approach</a>
       <a href="./">Products</a>
+      <a href="../blog/">Blog</a>
       <a href="../#team">Team</a>
       <a href="#contact">Contact</a>
     </div>
